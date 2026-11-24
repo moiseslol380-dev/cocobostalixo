@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para o Meu Amor Mais Mágico do Universo 🦄✨💖</title>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Principal -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>">
+</head>
+<body>
+
+  <!-- Canvas de Fundo: Estrelas cintilantes e partículas mágicas -->
+  <canvas id="magic-canvas"></canvas>
+
+  <!-- Barra de Progresso no Topo com Unicórnio Galopando -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollBar"></div>
+    <div class="scroll-unicorn-runner" id="scrollUnicorn">
+      <span class="unicorn-emoji">🦄</span>
+      <span class="rainbow-trail">🌈✨</span>
+    </div>
+  </div>
+
+  <!-- Botão de Música da Caixinha de Música Mágica -->
+  <div class="audio-toggle-container">
+    <button id="musicToggleBtn" class="magic-round-btn" title="Ligar / Desligar Melodia Encantada">
+      <span id="musicIcon" class="music-icon">🎵</span>
+      <span class="music-tooltip">Melodia Mágica</span>
+    </button>
+  </div>
+
+  <!-- Companheiro Mágico Flutuante (Mini Unicórnio interativo) -->
+  <div class="floating-companion" id="floatingCompanion">
+    <div class="speech-bubble" id="companionBubble">Psiu! Rola pra baixo pra ver a magia! 💕</div>
+    <div class="companion-avatar" id="companionAvatar">🦄</div>
+  </div>
+
+  <!-- Rastro Mágico do Cursor (renderizado via JS) -->
+  <div id="sparkle-cursor-container"></div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <header class="hero-section" id="hero">
+    <div class="hero-decorations">
+      <div class="cloud cloud-1">☁️</div>
+      <div class="cloud cloud-2">☁️</div>
+      <div class="rainbow-arc"></div>
+      <div class="floating-star star-1">✨</div>
+      <div class="floating-star star-2">⭐</div>
+      <div class="floating-star star-3">🌟</div>
+    </div>
+
+    <div class="hero-content">
+      <div class="badge-tag">
+        <span>✨ Para a Namorada Mais Especial do Mundo ✨</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Você é a <span class="rainbow-text">Magia</span> mais linda da minha vida!
+      </h1>
+      
+      <p class="hero-subtitle">
+        Entre todas as lendas e maravilhas do universo, nada se compara ao brilho do seu sorriso. 
+        Preparei este cantinho com muito amor, unicórnios e memórias inesquecíveis para você! 💖🦄
+      </p>
+
+      <!-- Animação Principal de Unicórnio (Lottie) -->
+      <div class="unicorn-hero-wrapper">
+        <div class="unicorn-glow"></div>
+        <div id="hero-lottie-unicorn" class="lottie-container"></div>
+        <div class="unicorn-ground-shadow"></div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#gallery" class="btn-primary-magic">
+          <span>Ver Nossas Memórias 📸✨</span>
+        </a>
+        <button id="heroSurpriseBtn" class="btn-secondary-magic">
+          <span>Soltar Brilhos! 🎉</span>
+        </button>
+      </div>
+
+      <div class="scroll-down-hint">
+        <span class="scroll-text">Role para baixo para navegar no nosso amor</span>
+        <div class="scroll-arrow">⬇️</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SEÇÃO: O TEMPO DO NOSSO AMOR ==================== -->
+  <section class="section love-counter-section" id="counter">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-icon">⏳💖</div>
+        <h2 class="section-title">Contador do Nosso Amor Encantado</h2>
+        <p class="section-desc">Juntos desde o dia <strong>4 de Julho de 2025</strong>... e cada segundo ao seu lado é um presente que guardo com carinho no coração ✨</p>
+      </div>
+
+      <div class="counter-card-glass reveal-on-scroll">
+        <div class="counter-grid">
+          <div class="counter-item">
+            <span class="counter-number" id="countDays">0</span>
+            <span class="counter-label">Dias</span>
+          </div>
+          <div class="counter-divider">:</div>
+          <div class="counter-item">
+            <span class="counter-number" id="countHours">0</span>
+            <span class="counter-label">Horas</span>
+          </div>
+          <div class="counter-divider">:</div>
+          <div class="counter-item">
+            <span class="counter-number" id="countMinutes">0</span>
+            <span class="counter-label">Minutos</span>
+          </div>
+          <div class="counter-divider">:</div>
+          <div class="counter-item">
+            <span class="counter-number" id="countSeconds">0</span>
+            <span class="counter-label">Segundos</span>
+          </div>
+        </div>
+        <p class="counter-footer-text">... e este é apenas o comecinho da nossa eternidade juntos! 💫</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO: MOTIVOS PARA TE AMAR ==================== -->
+  <section class="section reasons-section" id="reasons">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-icon">🦄💌</div>
+        <h2 class="section-title">Por que Você é Tão Especial?</h2>
+        <p class="section-desc">Pequenos grandes motivos que fazem meu coração disparar todos os dias</p>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reason-card reveal-on-scroll" data-delay="100">
+          <div class="reason-icon">☀️</div>
+          <h3>Seu Sorriso Único</h3>
+          <p>Tem o superpoder de transformar qualquer dia comum no momento mais feliz e colorido do mundo.</p>
+        </div>
+
+        <div class="reason-card reveal-on-scroll" data-delay="200">
+          <div class="reason-icon">🌈</div>
+          <h3>Sua Doçura e Luz</h3>
+          <p>Você enxerga beleza em tudo e espalha carinho por onde passa, exatamente como um arco-íris.</p>
+        </div>
+
+        <div class="reason-card reveal-on-scroll" data-delay="300">
+          <div class="reason-icon">🏰</div>
+          <h3>Seu Abraço é Meu Lar</h3>
+          <p>Não importa onde a gente esteja, quando estou abraçado com você eu sinto paz de verdade.</p>
+        </div>
+
+        <div class="reason-card reveal-on-scroll" data-delay="400">
+          <div class="reason-icon">🦄</div>
+          <h3>Mais Rara que Unicórnio</h3>
+          <p>Dizem que unicórnios são difíceis de encontrar, mas encontrar alguém tão incrível como você foi o maior presente do destino.</p>
+        </div>
+
+        <div class="reason-card reveal-on-scroll" data-delay="500">
+          <div class="reason-icon">✨</div>
+          <h3>Nossas Risadas Juntos</h3>
+          <p>As nossas brincadeiras, piadas internas e olhares que só a gente entende não têm preço.</p>
+        </div>
+
+        <div class="reason-card reveal-on-scroll" data-delay="600">
+          <div class="reason-icon">💖</div>
+          <h3>Você por Inteiro</h3>
+          <p>Amo cada detalhe seu, seu jeitinho, suas manias e a pessoa maravilhosa que você é para mim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO: MURAL DE LEMBRANÇAS (FOTOS) ==================== -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-icon">📸✨</div>
+        <h2 class="section-title">O Mural dos Nossos Momentos</h2>
+        <p class="section-desc">Clique nas fotos para ver em tamanho mágico e comemorar nossas lembranças!</p>
+      </div>
+
+      <!-- Filtro Interativo -->
+      <div class="gallery-filter-bar reveal-on-scroll">
+        <button class="filter-pill active" data-filter="all">Todas as Lembranças (27) 💕</button>
+        <button class="filter-pill" data-filter="favorites">Nossos Favoritos ⭐</button>
+        <button class="filter-pill" data-filter="sweet">Momentos Fofos 🌸</button>
+      </div>
+
+      <!-- Grid de Polaroids -->
+      <div class="polaroid-grid" id="polaroidGallery">
+        <!-- Inserido dinamicamente via JS com as 27 fotos -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO INTERATIVA: O UNICÓRNIO CHOCADO ==================== -->
+  <section class="section surprise-section" id="surprise">
+    <div class="section-container">
+      <div class="surprise-card-box reveal-on-scroll">
+        <div class="surprise-header">
+          <span class="surprise-tag">🎁 MOMENTO SURPRESA 🎁</span>
+          <h2>Atenção: Área de Alta Fofura!</h2>
+          <p>O unicórnio descobriu o tamanho do meu amor por você... veja a reação dele!</p>
+        </div>
+
+        <div class="shocked-unicorn-wrapper">
+          <div id="shocked-lottie-unicorn" class="lottie-container-shocked"></div>
+        </div>
+
+        <div class="surprise-actions">
+          <button id="triggerShockBtn" class="btn-primary-magic pulse-anim">
+            <span>CLIQUE AQUI PARA UMA EXPLOSÃO DE AMOR! 💥💖🦄</span>
+          </button>
+        </div>
+
+        <div id="surpriseMessage" class="surprise-revealed-text hidden">
+          <div class="magic-quote">
+            "VOCÊ É A PESSOA MAIS LINDA DO PLANETA TERRA E DE TODA A VIA LÁCTEA! NUNCA ESQUEÇA DISSO!" 💖🌈✨
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO: CARTA DO MEU CORAÇÃO ==================== -->
+  <section class="section letter-section" id="letter">
+    <div class="section-container">
+      <div class="section-header reveal-on-scroll">
+        <div class="section-icon">💌📜</div>
+        <h2 class="section-title">Uma Cartinha Especial Para Você</h2>
+        <p class="section-desc">Palavras sinceras de quem tem o coração completamente seu</p>
+      </div>
+
+      <div class="letter-parchment reveal-on-scroll">
+        <div class="parchment-tape top-left"></div>
+        <div class="parchment-tape top-right"></div>
+        <div class="parchment-seal">🦄</div>
+
+        <div class="letter-body">
+          <h3 class="letter-greeting">Meu amor, minha princesa encantada,</h3>
+          <p>
+            Desde aquele inesquecível <strong>4 de Julho de 2025</strong> em que começamos a namorar, tudo ganhou mais cor, mais sentido e um brilho que eu nunca pensei que existisse.
+            Você é a pessoa que alegra meus dias com a sua risada gostosa, que me acalma com sua voz e que me faz querer ser melhor a cada novo amanhecer.
+          </p>
+          <p>
+            Este site com unicórnios e arco-íris é só uma pequena demonstração do quão mágica você é para mim. Cada foto aqui representa um pedacinho da nossa história que eu guardo como o maior tesouro do mundo.
+          </p>
+          <p>
+            Obrigado por ser essa namorada companheira, carinhosa, linda por dentro e por fora, e por fazer da nossa realidade algo muito mais doce do que qualquer conto de fadas.
+          </p>
+          <p class="letter-closing">
+            Eu te amo infinito, daqui até o último arco-íris do universo! 🌈✨<br>
+            <strong>Para sempre seu amor. 💖</strong>
+          </p>
+        </div>
+
+        <div class="letter-interactive-footer">
+          <button id="kissRainBtn" class="btn-heart-burst">
+            <span>Mandar 1 Milhão de Beijinhos 💋💖</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODAL LIGHTBOX DE FOTOS ==================== -->
+  <div id="magicLightbox" class="lightbox-modal hidden">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" title="Fechar">&times;</button>
+      <button class="lightbox-nav prev" id="lightboxPrev" title="Foto Anterior">&#10094;</button>
+      
+      <div class="lightbox-photo-frame">
+        <div class="frame-horn">🦄✨</div>
+        <img id="lightboxImage" src="" alt="Lembrança Especial">
+        <div class="lightbox-caption" id="lightboxCaption">Nossa lembrança linda 💕</div>
+      </div>
+
+      <button class="lightbox-nav next" id="lightboxNext" title="Próxima Foto">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="magic-footer">
+    <div class="footer-unicorns">
+      <span class="mini-float">🦄</span>
+      <span class="mini-float delay-1">💖</span>
+      <span class="mini-float delay-2">✨</span>
+      <span class="mini-float delay-3">🌈</span>
+      <span class="mini-float delay-4">🦄</span>
+    </div>
+    <p>Feito exclusivamente com todo o amor do mundo para a minha namorada linda!</p>
+    <p class="footer-sub">Você é meu final feliz de todos os dias. 🦄💖</p>
+  </footer>
+
+  <!-- Scripts: Lottie, Confetti e os dados das animações -->
+  <script src="lottie.min.js"></script>
+  <script src="confetti.min.js"></script>
+  <script src="animacoes/little_unicorn.js"></script>
+  <script src="animacoes/shocked_unicorn.js"></script>
+  <!-- Script Principal do Site -->
+  <script src="script.js"></script>
+</body>
+</html>
